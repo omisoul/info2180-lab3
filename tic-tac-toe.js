@@ -5,11 +5,29 @@ function addSquares(board){
     }
 }
 
+function hasWinner(arr){
+    matches = [[0, 1, 2], [3, 4, 5], 
+               [6, 7, 8], [0, 3, 6], 
+               [1, 4, 7], [2, 5, 8], 
+               [0, 4, 8], [2, 4, 6]]
+
+    for(let i of matches){
+        // console.log(i);
+        if (arr[i[0]] == 'X' && arr[i[1]] == 'X' && arr[i[2]] == 'X'){
+            return 'X';
+        }
+        if (arr[i[0]] == 'O' && arr[i[1]] == 'O' && arr[i[2]] == 'O'){
+            return 'O';
+        }
+    }
+    return 'none';
+}
 
 
 window.addEventListener('DOMContentLoaded', (e) => {
     //Initialization
     let board = document.querySelector('#board'); 
+    let status = document.querySelector('#status');
     let isX = false;
     let gridArr = []
     
@@ -28,16 +46,28 @@ window.addEventListener('DOMContentLoaded', (e) => {
                 isX = true
             }
             gridArr = [...squares].map(square => square.innerHTML)
-            console.log(gridArr)
+            
+            if(hasWinner(gridArr) == 'X'){
+                status.classList.add('you-won');
+                status.textContent = "Congratulations! X is the Winner!";
+            }
+            if(hasWinner(gridArr) == 'O'){
+                status.classList.add('you-won');
+                status.textContent = "Congratulations! O is the Winner!";
+            }
+            
+
         });
+
+        // Adds hover style to the square on mouse enter
         square.addEventListener('mouseenter', e =>{
             square.classList.add('hover')
         })
+
+        // Removes hover style from the square on mouse leave
         square.addEventListener('mouseleave', e =>{
             square.classList.remove('hover')
         })
     })
 
-    squares.forEach(square => {
-    })
 });
