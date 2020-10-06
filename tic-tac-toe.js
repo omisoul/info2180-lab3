@@ -28,6 +28,7 @@ window.addEventListener('DOMContentLoaded', (e) => {
     //Initialization
     let board = document.querySelector('#board'); 
     let status = document.querySelector('#status');
+    let btn = document.querySelector('.btn');
     let isX = false;
     let gridArr = []
     
@@ -38,14 +39,14 @@ window.addEventListener('DOMContentLoaded', (e) => {
     squares.forEach(square => {
         square.addEventListener('click', () =>{
             if(isX){
-                square.innerHTML = 'O';
+                square.textContent = 'O';
                 isX = false
             }
             else{
-                square.innerHTML = 'X'
+                square.textContent = 'X'
                 isX = true
             }
-            gridArr = [...squares].map(square => square.innerHTML)
+            gridArr = [...squares].map(square => square.textContent)
             
             if(hasWinner(gridArr) == 'X'){
                 status.classList.add('you-won');
@@ -70,4 +71,10 @@ window.addEventListener('DOMContentLoaded', (e) => {
         })
     })
 
+    //Reset Game
+    btn.addEventListener('click', e =>{
+        squares.forEach(square => square.textContent = '')
+        status.classList.remove('you-won');
+        status.textContent = "Move your mouse over a square and click to play an X or an O.";
+    })
 });
