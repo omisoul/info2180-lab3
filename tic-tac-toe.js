@@ -38,11 +38,11 @@ window.addEventListener('DOMContentLoaded', (e) => {
 
     squares.forEach(square => {
         square.addEventListener('click', () =>{
-            if(isX){
+            if(isX && square.textContent == ''){
                 square.textContent = 'O';
                 isX = false
             }
-            else{
+            else if(!isX && square.textContent == ''){
                 square.textContent = 'X'
                 isX = true
             }
