@@ -17,7 +17,7 @@ window.addEventListener('DOMContentLoaded', (e) => {
     
     let squares = document.querySelectorAll('.square')
 
-    squares.forEach((square) => {
+    squares.forEach(square => {
         square.addEventListener('click', () =>{
             if(isX){
                 square.innerHTML = 'O';
@@ -30,5 +30,14 @@ window.addEventListener('DOMContentLoaded', (e) => {
             gridArr = [...squares].map(square => square.innerHTML)
             console.log(gridArr)
         });
+        square.addEventListener('mouseenter', e =>{
+            square.classList.add('hover')
+        })
+        square.addEventListener('mouseleave', e =>{
+            square.classList.remove('hover')
+        })
+    })
+
+    squares.forEach(square => {
     })
 });
