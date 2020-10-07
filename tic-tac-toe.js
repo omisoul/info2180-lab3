@@ -74,6 +74,7 @@ window.addEventListener('DOMContentLoaded', (e) => {
     //Reset Game
     btn.addEventListener('click', e =>{
         squares.forEach(square => square.textContent = '')
+        isX = false;
         status.classList.remove('you-won');
         status.textContent = "Move your mouse over a square and click to play an X or an O.";
     })
