@@ -20,10 +20,14 @@ function hasWinner(arr) {
             return 'O';
         }
     }
-    for (let i in arr){
-        let count = 0
+    let count = 0
+    for (let i of arr){
+        
         if (i == "X" || i == "O")
+            {
+            console.log(count);
             count += 1
+        }
         if (count == 9){
             return 'draw'
         }
