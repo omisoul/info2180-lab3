@@ -20,6 +20,14 @@ function hasWinner(arr) {
             return 'O';
         }
     }
+    for (let i in arr){
+        let count = 0
+        if (i == "X" || i == "O")
+            count += 1
+        if (count == 9){
+            return 'draw'
+        }
+    }
     return 'none';
 }
 
@@ -58,7 +66,8 @@ window.addEventListener('DOMContentLoaded', (e) => {
                 status.classList.add('you-won');
                 status.textContent = "Congratulations! O is the Winner!";
             }
-
+            if (hasWinner(gridArr) == 'draw')
+                status.textContent = "The game has ended in a draw, press 'reset game' to start again";
 
         });
 
